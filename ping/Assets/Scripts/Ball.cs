@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Ball : MonoBehaviour
 {
     public float speed = 30;
+    private GameObject obj;//кто из игроков последним отбил
+    public Gluing gl;
+    public Gluing gl2;
     private void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+
+        // Vector3 delta = transform.position - objectToFollow.transform.position;
+        //Debug.Log("dfghj");
+        //GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+        gl.down = true;
+        gl2.down = false;
 
     }
 
@@ -38,7 +47,10 @@ public class Ball : MonoBehaviour
                     GameObject gameObject = GameObject.Find("RacketLeft");
                     transform.position = gameObject.transform.position;
                     transform.position += new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
-                    GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+                    gl.delta = transform.position - gl.obj.transform.position;
+                    gl.down = true;
+                    gl2.down = false;
+                    //GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
                 }
                 else
                 {
@@ -47,7 +59,10 @@ public class Ball : MonoBehaviour
                         GameObject gameObject = GameObject.Find("RacketRight");
                         transform.position = gameObject.transform.position;
                         transform.position -= new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
-                        GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
+                        gl2.down = true;
+                        gl2.delta = transform.position - gl2.obj.transform.position;
+                        gl.down = false;
+                        //GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
                     }
                 }
             }
