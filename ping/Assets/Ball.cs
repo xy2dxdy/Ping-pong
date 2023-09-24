@@ -31,6 +31,26 @@ public class Ball : MonoBehaviour
                 Vector2 dir = new Vector2(-1, y).normalized;
                 GetComponent<Rigidbody2D>().velocity = dir * speed;
             }
+            else
+            {
+                if (collision.gameObject.name == "WallLeft")
+                {
+                    GameObject gameObject = GameObject.Find("RacketLeft");
+                    transform.position = gameObject.transform.position;
+                    transform.position += new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
+                    GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+                }
+                else
+                {
+                    if (collision.gameObject.name == "WallRight")
+                    {
+                        GameObject gameObject = GameObject.Find("RacketRight");
+                        transform.position = gameObject.transform.position;
+                        transform.position -= new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
+                        GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
+                    }
+                }
+            }
         }
     }
 }
