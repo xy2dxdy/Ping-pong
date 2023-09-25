@@ -10,7 +10,9 @@ public class User : MonoBehaviour
     public KeyCode down;
     public int deltaX = 1;
     private int current = 0;
-    public Gluing gl;
+    public Gluing gluing;
+    public Doubling doubling;
+    public Swipe swipe;
     void Start()
     {
         objects[current].transform.position += new Vector3(deltaX, 0, 0);
@@ -21,11 +23,18 @@ public class User : MonoBehaviour
     {
         if (Input.GetKeyDown(code))
         {
-           // gl.down = false;
-            //if (objects[current].GetType() == typeof(Gluing))
-            //{
-            //    gl =
-            //}
+            switch (current)
+            {
+                case 0:
+                    gluing.down = true;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
 
         }
         if(Input.GetKeyDown(up) && current > 0)

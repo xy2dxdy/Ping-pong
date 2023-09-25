@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 27049150}
   - component: {fileID: 27049152}
   - component: {fileID: 27049151}
+  - component: {fileID: 27049153}
   m_Layer: 5
   m_Name: Swipe
   m_TagString: Untagged
@@ -199,6 +200,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27049149}
   m_CullTransparentMesh: 1
+--- !u!114 &27049153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27049149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84049cdef426fc49b1e98ae98d54c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &80168365
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +406,9 @@ MonoBehaviour:
   up: 275
   down: 276
   deltaX: -1
-  gl: {fileID: 1699864863}
+  gluing: {fileID: 1699864863}
+  doubling: {fileID: 1751001163}
+  swipe: {fileID: 2012737820}
 --- !u!1 &100470113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1250,7 @@ MonoBehaviour:
   code: 113
   delta: {x: 0, y: 0, z: 0}
   down: 0
+  hit: 0
   speed: 13
 --- !u!1 &1210540863
 GameObject:
@@ -1459,6 +1475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScore: {fileID: 1756590522}
+  maxScore: 25
 --- !u!1 &1381481951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1820,7 @@ MonoBehaviour:
   code: 305
   delta: {x: 0, y: 0, z: 0}
   down: 0
+  hit: 0
   speed: 13
 --- !u!114 &1699864864
 MonoBehaviour:
@@ -1986,6 +2004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScore: {fileID: 2011772527}
+  maxScore: 25
 --- !u!1 &1723397878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,6 +2084,7 @@ GameObject:
   - component: {fileID: 1751001160}
   - component: {fileID: 1751001162}
   - component: {fileID: 1751001161}
+  - component: {fileID: 1751001163}
   m_Layer: 5
   m_Name: Doubling (1)
   m_TagString: Untagged
@@ -2130,6 +2150,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751001159}
   m_CullTransparentMesh: 1
+--- !u!114 &1751001163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751001159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173c8ca636e6d3c4c8d364ced09eef66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1756590519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2173,6 @@ GameObject:
   - component: {fileID: 1756590520}
   - component: {fileID: 1756590523}
   - component: {fileID: 1756590522}
-  - component: {fileID: 1756590521}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -2166,21 +2197,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -318, y: 125}
-  m_SizeDelta: {x: 33, y: 56}
+  m_SizeDelta: {x: 40, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1756590521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756590519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733cf9deb561cc34789833396f039ab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textScore: {fileID: 1756590522}
 --- !u!114 &1756590522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2417,7 +2435,9 @@ MonoBehaviour:
   up: 100
   down: 97
   deltaX: 1
-  gl: {fileID: 948504558}
+  gluing: {fileID: 948504558}
+  doubling: {fileID: 2105832450}
+  swipe: {fileID: 27049153}
 --- !u!1 &2011772524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,7 +2449,6 @@ GameObject:
   - component: {fileID: 2011772525}
   - component: {fileID: 2011772528}
   - component: {fileID: 2011772527}
-  - component: {fileID: 2011772526}
   m_Layer: 5
   m_Name: Text (Legacy) (1)
   m_TagString: Untagged
@@ -2454,21 +2473,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 318, y: 125}
-  m_SizeDelta: {x: 33, y: 56}
+  m_SizeDelta: {x: 40, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2011772526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011772524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733cf9deb561cc34789833396f039ab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textScore: {fileID: 2011772527}
 --- !u!114 &2011772527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,6 +2528,7 @@ GameObject:
   - component: {fileID: 2012737817}
   - component: {fileID: 2012737819}
   - component: {fileID: 2012737818}
+  - component: {fileID: 2012737820}
   m_Layer: 5
   m_Name: Swipe (1)
   m_TagString: Untagged
@@ -2587,6 +2594,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012737816}
   m_CullTransparentMesh: 1
+--- !u!114 &2012737820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012737816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84049cdef426fc49b1e98ae98d54c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2094330576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,6 +2696,7 @@ GameObject:
   - component: {fileID: 2105832447}
   - component: {fileID: 2105832449}
   - component: {fileID: 2105832448}
+  - component: {fileID: 2105832450}
   m_Layer: 5
   m_Name: Doubling
   m_TagString: Untagged
@@ -2742,6 +2762,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105832446}
   m_CullTransparentMesh: 1
+--- !u!114 &2105832450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105832446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173c8ca636e6d3c4c8d364ced09eef66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

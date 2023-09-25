@@ -9,22 +9,23 @@ public class Gluing : MonoBehaviour
     public Ball ball;
     public KeyCode code;
     public Vector3 delta;
-    public bool down = true;
+    public bool down = false;
+    public bool hit = false;
     public int speed = 13;
     private void Start()
     {
-        delta = ball.transform.position - obj.transform.position;
+        //delta = ball.transform.position - obj.transform.position;
     }
     private void Update()
     {
-        if (down)
+        if (down && hit)
         {
             
-            //_delta = ball.transform.position - obj.transform.position;
             if (Input.GetKeyDown(code))
             {
                 ball.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
                 down = false;
+                hit = false;
 
             }
             else

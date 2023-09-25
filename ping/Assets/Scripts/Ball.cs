@@ -15,7 +15,9 @@ public class Ball : MonoBehaviour
         // Vector3 delta = transform.position - objectToFollow.transform.position;
         //Debug.Log("dfghj");
         //GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+        gl.delta = transform.position - gl.obj.transform.position;
         gl.down = true;
+        gl.hit = true;
         gl2.down = false;
 
     }
@@ -28,17 +30,33 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.name == "RacketLeft")
         {
-            float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
-            Vector2 dir = new Vector2(1, y).normalized;
-            GetComponent<Rigidbody2D>().velocity = dir * speed;
+            if (gl.down == true)
+            {
+                gl.delta = transform.position - gl.obj.transform.position;
+                gl.hit = true;
+            }
+            else
+            {
+                float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
+                Vector2 dir = new Vector2(1, y).normalized;
+                GetComponent<Rigidbody2D>().velocity = dir * speed;
+            }
         }
         else
         {
             if (collision.gameObject.name == "RacketRight")
             {
-                float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
-                Vector2 dir = new Vector2(-1, y).normalized;
-                GetComponent<Rigidbody2D>().velocity = dir * speed;
+                if (gl2.down == true)
+                {
+                    gl2.delta = transform.position - gl2.obj.transform.position;
+                    gl2.hit = true;
+                }
+                else
+                {
+                    float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
+                    Vector2 dir = new Vector2(-1, y).normalized;
+                    GetComponent<Rigidbody2D>().velocity = dir * speed;
+                }
             }
             else
             {
