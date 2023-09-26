@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class User : MonoBehaviour
@@ -12,7 +13,6 @@ public class User : MonoBehaviour
     private int current = 0;
     public Gluing gluing;
     public Doubling doubling;
-    public Swipe swipe;
     void Start()
     {
         objects[current].transform.position += new Vector3(deltaX, 0, 0);
@@ -36,6 +36,7 @@ public class User : MonoBehaviour
 
                     break;
                 case 2:
+                    gluing.ball.GetComponent<Rigidbody2D>().velocity *= 2;
                     break;
                 default:
                     break;

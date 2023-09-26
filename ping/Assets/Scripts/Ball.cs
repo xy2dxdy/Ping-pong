@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     public Doubling doubling2;
     public ScoreUI wallRight;
     public ScoreUI wallLeft;
+
     public void Copy(Ball ball)
     {
         gl = ball.gl;
@@ -25,12 +26,6 @@ public class Ball : MonoBehaviour
     private void Start()
     {
 
-        // Vector3 delta = transform.position - objectToFollow.transform.position;
-        //Debug.Log("dfghj");
-        //GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-        //gl.delta = transform.position - gl.obj.transform.position;
-        //gl.down = true;
-        //gl.hit = true;
         gl2.down = false;
 
     }
@@ -88,6 +83,11 @@ public class Ball : MonoBehaviour
                 }
 
             }
+            //if (swipe1.down)
+            //{
+            //    swipe1.down = false;
+            //    transform.GetComponent<Rigidbody2D>().velocity /= 2;
+            //}
         }
         else
         {
@@ -136,6 +136,11 @@ public class Ball : MonoBehaviour
                         doubling2.newBall = this;
                     }
                 }
+                //if (swipe2.down)
+                //{
+                //    swipe2.down = false;
+                //    transform.GetComponent<Rigidbody2D>().velocity /= 2;
+                //}
             }
             else
             {
