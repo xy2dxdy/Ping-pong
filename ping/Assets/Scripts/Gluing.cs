@@ -9,12 +9,12 @@ public class Gluing : MonoBehaviour
     public Ball ball;
     public KeyCode code;
     public Vector3 delta;
-    public bool down = false;
-    public bool hit = false;
+    public bool down = true;
+    public bool hit = true;
     public int speed = 13;
     private void Start()
     {
-        //delta = ball.transform.position - obj.transform.position;
+        delta = ball.transform.position - obj.transform.position;
     }
     private void Update()
     {

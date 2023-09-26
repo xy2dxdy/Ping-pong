@@ -29,6 +29,11 @@ public class User : MonoBehaviour
                     gluing.down = true;
                     break;
                 case 1:
+                    doubling.down = true;
+                    doubling.hit = false;
+                    doubling.isRun = false;
+                    doubling.isBallCreated = false;
+
                     break;
                 case 2:
                     break;
