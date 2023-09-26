@@ -18,6 +18,7 @@ public class Ball : MonoBehaviour
     public ScoreUI wallLeft;
     public int numberOfCollisions = 0;
     public RandomSpawn spawn;
+    public ScoreUI scoreUI;
     public void Copy(Ball ball)
     {
         gl = ball.gl;
@@ -40,6 +41,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.name == "RacketLeft")
         {
+            scoreUI = wallRight;
             numberOfCollisions++;
             if (gl.down == true)
             {
@@ -93,8 +95,10 @@ public class Ball : MonoBehaviour
         }
         else
         {
+            Debug.Log(collision.gameObject.name);
             if (collision.gameObject.name == "RacketRight")
             {
+                scoreUI = wallLeft;
                 numberOfCollisions++;
                 if (gl2.down == true)
                 {
@@ -174,7 +178,6 @@ public class Ball : MonoBehaviour
                         gl.delta = transform.position - gl.obj.transform.position;
                         gl.down = true;
                         gl2.down = false;
-                        //GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
                     }
                 }
                 else
@@ -206,9 +209,9 @@ public class Ball : MonoBehaviour
                         gl2.down = true;
                         gl2.delta = transform.position - gl2.obj.transform.position;
                         gl.down = false;
-                        //GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
 
                     }
+                    
                 }
             }
         }
@@ -217,6 +220,16 @@ public class Ball : MonoBehaviour
             spawn.Spawn();
             numberOfCollisions = 0;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Gold(Clone)")
+        {
+            /*œŒ ¿ “ŒÀ‹ Œ Õ¿ ≈ƒ»Õ»÷” ”¬≈À»◊»¬¿ﬁ*/
+            this.scoreUI.score++;
+            Destroy(collision.gameObject);
+        }
+
     }
 }
             

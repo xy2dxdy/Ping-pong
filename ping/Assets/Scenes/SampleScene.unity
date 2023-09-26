@@ -687,7 +687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 407975342}
-  - component: {fileID: 407975341}
+  - component: {fileID: 407975343}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -695,25 +695,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &407975341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407975340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8fd287d120bf94e9f66a13603369f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects: []
-  slowdaun: {fileID: -2249420539582254002, guid: 0547e748bfcff0443b7e8f7bd4f9da22, type: 3}
-  bonusZone: {fileID: 5511397608152226350, guid: 8e96f639c007c8a4eaaef0dde12fcc05, type: 3}
-  inverceZone: {fileID: -8034612521862815449, guid: ba4154da98a79f442b20154a6aa58f07, type: 3}
-  center: {x: 0, y: 0}
-  size: {x: 6.45, y: 5.875}
-  zone: {fileID: 0}
 --- !u!4 &407975342
 Transform:
   m_ObjectHideFlags: 0
@@ -729,6 +710,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407975343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407975340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8fd287d120bf94e9f66a13603369f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: []
+  slowdaun: {fileID: -2249420539582254002, guid: 0547e748bfcff0443b7e8f7bd4f9da22, type: 3}
+  bonusZone: {fileID: -1320644915364478580, guid: 8e96f639c007c8a4eaaef0dde12fcc05, type: 3}
+  inverceZone: {fileID: -8034612521862815449, guid: ba4154da98a79f442b20154a6aa58f07, type: 3}
+  center: {x: 0, y: 0}
+  size: {x: 6.45, y: 5.875}
+  zone: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,9 +1349,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScore: {fileID: 1756590522}
+  score: 0
   maxScore: 25
   ball: {fileID: 137582998}
   secondBall: {fileID: 0}
+  difference: 3
 --- !u!1 &1381481951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,9 +1882,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScore: {fileID: 2011772527}
+  score: 0
   maxScore: 25
   ball: {fileID: 137582998}
   secondBall: {fileID: 0}
+  difference: 3
 --- !u!1 &1723397878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,7 +2677,7 @@ PrefabInstance:
     - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: spawn
       value: 
-      objectReference: {fileID: 407975341}
+      objectReference: {fileID: 407975343}
     - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: swipe1
       value: 

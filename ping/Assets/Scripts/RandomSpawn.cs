@@ -12,7 +12,7 @@ public class RandomSpawn : MonoBehaviour
     public Vector2 center; // координаты центра
     public Vector2 size = new Vector2(6.45f, 5.875f); // координаты в которых будут появляться объекты
     public GameObject zone;
-    private GameObject obj;
+    //private GameObject obj;
     private int lenght = 0;
   
     private int random;
@@ -30,11 +30,10 @@ public class RandomSpawn : MonoBehaviour
 
     public void Spawn()
     {
-        if(obj)
-            Destroy(obj);
         Vector2 pos = center + new Vector2(Random.Range(-size.x, size.x), Random.Range(-size.y, size.y));
         int number = Random.Range(0, lenght);
         zone = objects[number];
-        obj = Instantiate(zone, pos, Quaternion.identity); // осуществляем появление объекта в заданных случайных позициях в диапазоне заданных координат
+        //zone.name = "Zone";
+        Instantiate(zone, pos, Quaternion.identity); // осуществляем появление объекта в заданных случайных позициях в диапазоне заданных координат
     }
 }
