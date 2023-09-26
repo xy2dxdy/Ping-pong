@@ -49,9 +49,10 @@ public class Ball : MonoBehaviour
                 Vector2 dir = new Vector2(1, y).normalized;
                 GetComponent<Rigidbody2D>().velocity = dir * speed;
             }
-            
+
             if (doubling2.down == true && doubling2.hit == true)
             {
+
                 if (transform != doubling2.newBall)
                 {
                     gl.ball = doubling2.newBall;
@@ -71,23 +72,21 @@ public class Ball : MonoBehaviour
                     doubling2.ball = doubling2.newBall;
                     doubling2.newBall = null;
                 }
-           
-            }
-            if (doubling1.down == true)
-            {
-                doubling1.hit = true;
-                if (this == doubling1.newBall)
-                {
-                    doubling1.ball = doubling1.newBall;
-                    doubling1.newBall = this;
-                }
 
             }
-            //if (swipe1.down)
-            //{
-            //    swipe1.down = false;
-            //    transform.GetComponent<Rigidbody2D>().velocity /= 2;
-            //}
+            else
+            {
+                if (doubling1.down == true)
+                {
+                    doubling1.hit = true;
+                    if (this == doubling1.newBall)
+                    {
+                        doubling1.ball = doubling1.newBall;
+                        doubling1.newBall = this;
+                    }
+
+                }
+            }
         }
         else
         {
@@ -106,6 +105,8 @@ public class Ball : MonoBehaviour
                 }
                 if (doubling1.down == true && doubling1.hit == true)
                 {
+
+
                     if (transform != doubling1.newBall)
                     {
                         gl.ball = doubling1.newBall;
@@ -125,22 +126,21 @@ public class Ball : MonoBehaviour
                         doubling1.ball = doubling1.newBall;
                         doubling1.newBall = null;
                     }
-                }
-                if (doubling2.down == true)
-                {
 
-                    doubling2.hit = true;
-                    if (this == doubling2.newBall)
+                }
+                else
+                {
+                    if (doubling2.down == true)
                     {
-                        doubling2.ball = doubling2.newBall;
-                        doubling2.newBall = this;
+
+                        doubling2.hit = true;
+                        if (this == doubling2.newBall)
+                        {
+                            doubling2.ball = doubling2.newBall;
+                            doubling2.newBall = this;
+                        }
                     }
                 }
-                //if (swipe2.down)
-                //{
-                //    swipe2.down = false;
-                //    transform.GetComponent<Rigidbody2D>().velocity /= 2;
-                //}
             }
             else
             {
