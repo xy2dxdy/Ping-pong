@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,7 +16,8 @@ public class Ball : MonoBehaviour
     public Doubling doubling2;
     public ScoreUI wallRight;
     public ScoreUI wallLeft;
-
+    public int numberOfCollisions = 0;
+    public RandomSpawn spawn;
     public void Copy(Ball ball)
     {
         gl = ball.gl;
@@ -38,6 +40,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.name == "RacketLeft")
         {
+            numberOfCollisions++;
             if (gl.down == true)
             {
                 gl.delta = transform.position - gl.obj.transform.position;
@@ -92,6 +95,7 @@ public class Ball : MonoBehaviour
         {
             if (collision.gameObject.name == "RacketRight")
             {
+                numberOfCollisions++;
                 if (gl2.down == true)
                 {
                     gl2.delta = transform.position - gl2.obj.transform.position;
@@ -207,6 +211,11 @@ public class Ball : MonoBehaviour
                     }
                 }
             }
+        }
+        if (numberOfCollisions >= 3)
+        {
+            spawn.Spawn();
+            numberOfCollisions = 0;
         }
     }
 }

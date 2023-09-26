@@ -678,6 +678,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &407975340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407975342}
+  - component: {fileID: 407975341}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &407975341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407975340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8fd287d120bf94e9f66a13603369f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: []
+  slowdaun: {fileID: -2249420539582254002, guid: 0547e748bfcff0443b7e8f7bd4f9da22, type: 3}
+  bonusZone: {fileID: 5511397608152226350, guid: 8e96f639c007c8a4eaaef0dde12fcc05, type: 3}
+  inverceZone: {fileID: -8034612521862815449, guid: ba4154da98a79f442b20154a6aa58f07, type: 3}
+  center: {x: 0, y: 0}
+  size: {x: 6.45, y: 5.875}
+  zone: {fileID: 0}
+--- !u!4 &407975342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407975340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5195851, y: -0.4121385, z: -1.5904016}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,6 +2671,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1699864863}
     - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 407975341}
+    - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: swipe1
       value: 
       objectReference: {fileID: 0}
@@ -2643,6 +2698,10 @@ PrefabInstance:
       propertyPath: wallRight
       value: 
       objectReference: {fileID: 1317283852}
+    - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
+      propertyPath: numberOfCollisions
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1332679972546520111, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -2711,3 +2770,4 @@ SceneRoots:
   - {fileID: 6144367533837054071}
   - {fileID: 100470117}
   - {fileID: 1723397881}
+  - {fileID: 407975342}

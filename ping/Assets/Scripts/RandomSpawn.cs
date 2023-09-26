@@ -6,12 +6,13 @@ using UnityEngine;
 public class RandomSpawn : MonoBehaviour
 {
     public GameObject[] objects;
-    public Blue blue;
-    public Gold gold;
-    public Purple purple;
+    public Slowdown slowdaun;
+    public BonusZone bonusZone;
+    public InverceZone inverceZone;
     public Vector2 center; // координаты центра
-    public Vector2 size; // координаты в которых будут появляться объекты
+    public Vector2 size = new Vector2(6.45f, 5.875f); // координаты в которых будут появляться объекты
     public GameObject zone;
+    private GameObject obj;
     private int lenght = 0;
   
     private int random;
@@ -21,20 +22,19 @@ public class RandomSpawn : MonoBehaviour
         objects[0] = new GameObject();
         objects[1] = new GameObject();
         objects[2] = new GameObject();
-        objects[0] = blue.GameObject();
-        objects[1] = gold.GameObject();
-        objects[2] = purple.GameObject();
+        objects[0] = slowdaun.GameObject();
+        objects[1] = inverceZone.GameObject();
+        objects[2] = bonusZone.GameObject();
         lenght = 3;
     }
 
     public void Spawn()
     {
-        Vector2 pos = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
-        zone = objects[Random.Range(0, lenght)];
-        Instantiate(zone, pos, Quaternion.identity); // осуществляем появление объекта в заданных случайных позициях в диапазоне заданных координат
-        Vector2 pos2 = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2)); 
-        Instantiate(gold, pos2, Quaternion.identity);
-        Vector2 pos3 = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
-        Instantiate(purple, pos3, Quaternion.identity);
+        if(obj)
+            Destroy(obj);
+        Vector2 pos = center + new Vector2(Random.Range(-size.x, size.x), Random.Range(-size.y, size.y));
+        int number = Random.Range(0, lenght);
+        zone = objects[number];
+        obj = Instantiate(zone, pos, Quaternion.identity); // осуществляем появление объекта в заданных случайных позициях в диапазоне заданных координат
     }
 }
