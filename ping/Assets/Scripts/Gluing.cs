@@ -12,7 +12,7 @@ public class Gluing : MonoBehaviour
     public bool down = true;
     public bool hit = true;
     public int speed = 13;
-    public int time;
+    public int time = 10;
     private void Start()
     {
         delta = ball.transform.position - obj.transform.position;
@@ -33,7 +33,4 @@ public class Gluing : MonoBehaviour
                 ball.transform.position = delta + obj.transform.position;
         }
     }
-
-
-
 }

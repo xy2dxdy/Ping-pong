@@ -23,16 +23,29 @@ public class User : MonoBehaviour
             switch (current)
             {
                 case 0:
-                    gluing.down = true;
+                    if (gluing.time != 0)
+                    {
+                        gluing.down = true;
+                        StartCoroutine(TimerGluing());
+                    }
                     break;
                 case 1:
-                    doubling.down = true;
-                    doubling.hit = false;
-                    doubling.isRun = false;
-                    doubling.isBallCreated = false;
+                    if (doubling.time != 0)
+                    {
+                        doubling.down = true;
+                        doubling.hit = false;
+                        doubling.isRun = false;
+                        doubling.isBallCreated = false;
+                        StartCoroutine(TimerDoubling());
+                    }
+                    
                     break;
                 case 2:
-                    swipe.down = true;
+                    if (swipe.time != 0)
+                    {
+                        swipe.down = true;
+                        StartCoroutine(TimerSwipe());
+                    }
                     break;
                 default:
                     break;
@@ -47,5 +60,27 @@ public class User : MonoBehaviour
                 current = 0;
             objects[current].GetComponent<Outline>().enabled = true;
         }
+
+    }
+    private IEnumerator TimerGluing()
+    {
+        int t = gluing.time;
+        gluing.time = 0;
+        yield return new WaitForSeconds(t);
+        gluing.time = t;
+    }
+    private IEnumerator TimerSwipe()
+    {
+        int t = swipe.time;
+        swipe.time = 0;
+        yield return new WaitForSeconds(t);
+        swipe.time = t;
+    }
+    private IEnumerator TimerDoubling()
+    {
+        int t = doubling.time;
+        doubling.time = 0;
+        yield return new WaitForSeconds(t);
+        doubling.time = t;
     }
 }

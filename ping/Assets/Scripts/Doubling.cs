@@ -15,7 +15,7 @@ public class Doubling : MonoBehaviour
     public bool isRun = false;
     public bool isBallCreated = false;
     public int speed = 13;
-    public int time;
+    public int time = 15;
     void Update()
     {
         if (down && hit && !isRun)
@@ -33,7 +33,6 @@ public class Doubling : MonoBehaviour
         ball.wallLeft.secondBall = newBall;
         ball.wallRight.secondBall = newBall;
         newBall.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-       
     }
 
 }

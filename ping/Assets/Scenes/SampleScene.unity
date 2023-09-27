@@ -230,6 +230,7 @@ MonoBehaviour:
   down: 0
   hit: 0
   ball: {fileID: 137582998}
+  time: 6
 --- !u!1 &80168365
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +424,7 @@ MonoBehaviour:
   - {fileID: 1751001159}
   - {fileID: 2012737816}
   code: 305
-  right: 276
+  right: 275
   gluing: {fileID: 1699864863}
   doubling: {fileID: 1751001163}
   swipe: {fileID: 2012737821}
@@ -1198,7 +1199,7 @@ MonoBehaviour:
   down: 1
   hit: 1
   speed: 13
-  time: 0
+  time: 10
 --- !u!114 &948504559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,12 +1626,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 80168365}
   ball: {fileID: 137582998}
-  code: 275
+  code: 276
   delta: {x: 0, y: 0, z: 0}
   down: 0
   hit: 0
   speed: -13
-  time: 0
+  time: 10
 --- !u!114 &1699864864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1998,7 +1999,7 @@ MonoBehaviour:
   isRun: 0
   isBallCreated: 0
   speed: -13
-  time: 0
+  time: 15
 --- !u!114 &1751001164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2555,6 +2556,7 @@ MonoBehaviour:
   down: 0
   hit: 0
   ball: {fileID: 137582998}
+  time: 6
 --- !u!1 &2105832446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,7 +2654,7 @@ MonoBehaviour:
   isRun: 0
   isBallCreated: 0
   speed: 13
-  time: 0
+  time: 15
 --- !u!114 &2105832451
 MonoBehaviour:
   m_ObjectHideFlags: 0

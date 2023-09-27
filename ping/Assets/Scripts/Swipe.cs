@@ -7,6 +7,7 @@ public class Swipe : MonoBehaviour
     public bool down = false;
     public bool hit = false;
     public Ball ball;
+    public int time = 6;
     void FixedUpdate()
     {
         if (down && hit)
