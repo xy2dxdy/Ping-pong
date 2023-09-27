@@ -177,6 +177,7 @@ public class Ball : MonoBehaviour
                     else
                     {
                         GameObject gameObject = GameObject.Find("RacketLeft");
+                        transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                         transform.position = gameObject.transform.position;
                         transform.position += new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
                         gl.delta = transform.position - gl.obj.transform.position;
