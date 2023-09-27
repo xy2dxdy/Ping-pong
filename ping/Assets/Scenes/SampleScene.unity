@@ -373,6 +373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   axis: Vertical2
+  isInverce: 0
+  isSlow: 0
 --- !u!114 &80168371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2305,6 +2307,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   axis: Vertical
+  isInverce: 0
+  isSlow: 0
 --- !u!114 &1895685883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2703,6 +2707,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1317283852}
     - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
+      propertyPath: racketLeft
+      value: 
+      objectReference: {fileID: 1895685882}
+    - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
+      propertyPath: racketRight
+      value: 
+      objectReference: {fileID: 80168370}
+    - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: numberOfCollisions
       value: -1
       objectReference: {fileID: 0}
@@ -2752,7 +2764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9063795779849626580, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

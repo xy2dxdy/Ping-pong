@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UIElements;
 
 public class Ball : MonoBehaviour
@@ -19,6 +21,8 @@ public class Ball : MonoBehaviour
     public int numberOfCollisions = 0;
     public RandomSpawn spawn;
     public ScoreUI scoreUI;
+    public MoveRacket racketLeft;
+    public MoveRacket racketRight;
     public void Copy(Ball ball)
     {
         gl = ball.gl;
@@ -219,6 +223,20 @@ public class Ball : MonoBehaviour
         {
             spawn.Spawn();
             numberOfCollisions = 0;
+            if (racketLeft.isInverce == true)
+                racketLeft.isInverce = false;
+            if (racketRight.isInverce == true)
+                racketRight.isInverce = false;
+            if (racketRight.isSlow == true)
+            {
+                racketRight.isSlow = false;
+                racketRight.speed *= 2;
+            }
+            if (racketLeft.isSlow == true)
+            {
+                racketLeft.isSlow = false;
+                racketLeft.speed *= 2;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -229,7 +247,34 @@ public class Ball : MonoBehaviour
             this.scoreUI.score++;
             Destroy(collision.gameObject);
         }
-
+        if (collision.gameObject.name == "Purple(Clone)")
+        {
+            if (scoreUI == wallRight)
+            {
+                racketLeft.isInverce = true;
+                Destroy(collision.gameObject);
+            }
+            if (scoreUI == wallLeft)
+            {
+                racketRight.isInverce = true;
+                Destroy(collision.gameObject);
+            }
+        }
+        if (collision.gameObject.name == "Blue(Clone)")
+        {
+            if (scoreUI == wallRight)
+            {
+                racketLeft.speed /= 2;
+                racketLeft.isSlow = true;
+                Destroy(collision.gameObject);
+            }
+            if (scoreUI == wallLeft)
+            {
+                racketRight.speed /= 2;
+                racketRight.isSlow = true;
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }
             
