@@ -15,6 +15,7 @@ public class Doubling : MonoBehaviour
     public bool isRun = false;
     public bool isBallCreated = false;
     public int speed = 13;
+    public int time;
     void Update()
     {
         if (down && hit && !isRun)

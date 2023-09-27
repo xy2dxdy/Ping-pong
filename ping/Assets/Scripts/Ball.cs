@@ -23,6 +23,8 @@ public class Ball : MonoBehaviour
     public ScoreUI scoreUI;
     public MoveRacket racketLeft;
     public MoveRacket racketRight;
+    public Swipe swipe1;
+    public Swipe swipe2;
     public void Copy(Ball ball)
     {
         gl = ball.gl;
@@ -96,6 +98,8 @@ public class Ball : MonoBehaviour
 
                 }
             }
+            if (swipe1.down == true)
+                swipe1.hit = true;
         }
         else
         {
@@ -153,6 +157,8 @@ public class Ball : MonoBehaviour
                         }
                     }
                 }
+                if (swipe2.down == true)
+                    swipe2.hit = true;
             }
             else
             {
@@ -183,6 +189,24 @@ public class Ball : MonoBehaviour
                         gl.delta = transform.position - gl.obj.transform.position;
                         gl.down = true;
                         gl2.down = false;
+                        doubling1.down = false;
+                        doubling2.down = false;
+                        swipe1.down = false;
+                        swipe2.down = false;
+                    }
+                    if (racketLeft.isInverce == true)
+                        racketLeft.isInverce = false;
+                    if (racketRight.isInverce == true)
+                        racketRight.isInverce = false;
+                    if (racketRight.isSlow == true)
+                    {
+                        racketRight.isSlow = false;
+                        racketRight.speed *= 2;
+                    }
+                    if (racketLeft.isSlow == true)
+                    {
+                        racketLeft.isSlow = false;
+                        racketLeft.speed *= 2;
                     }
                 }
                 else
@@ -207,13 +231,33 @@ public class Ball : MonoBehaviour
                             Destroy(transform.GameObject());
 
                         }
-
-                        GameObject gameObject = GameObject.Find("RacketRight");
-                        transform.position = gameObject.transform.position;
-                        transform.position -= new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
-                        gl2.down = true;
-                        gl2.delta = transform.position - gl2.obj.transform.position;
-                        gl.down = false;
+                        else
+                        {
+                            GameObject gameObject = GameObject.Find("RacketRight");
+                            transform.position = gameObject.transform.position;
+                            transform.position -= new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
+                            gl2.down = true;
+                            gl2.delta = transform.position - gl2.obj.transform.position;
+                            gl.down = false;
+                            doubling1.down = false;
+                            doubling2.down = false;
+                            swipe1.down = false;
+                            swipe2.down = false;
+                        }
+                        if (racketLeft.isInverce == true)
+                            racketLeft.isInverce = false;
+                        if (racketRight.isInverce == true)
+                            racketRight.isInverce = false;
+                        if (racketRight.isSlow == true)
+                        {
+                            racketRight.isSlow = false;
+                            racketRight.speed *= 2;
+                        }
+                        if (racketLeft.isSlow == true)
+                        {
+                            racketLeft.isSlow = false;
+                            racketLeft.speed *= 2;
+                        }
 
                     }
                     
