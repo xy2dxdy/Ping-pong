@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class User : MonoBehaviour
     public Gluing gluing;
     public Doubling doubling;
     public Swipe swipe;
+    public GameObject timer;
+    public Canvas canvas;
     void Start()
     {
         objects[current].GetComponent<Outline>().enabled = true;
@@ -67,21 +70,39 @@ public class User : MonoBehaviour
     {
         int t = gluing.time;
         gluing.time = 0;
+        gluing.sprite.SetActive(false);
+        gluing.timer.time = t;
+        GameObject obj = Instantiate(timer, gluing.transform.position, Quaternion.identity);
+        obj.transform.SetParent(canvas.transform);
         yield return new WaitForSeconds(t);
+        Destroy(obj);
+        gluing.sprite.SetActive(true);
         gluing.time = t;
     }
     private IEnumerator TimerSwipe()
     {
         int t = swipe.time;
         swipe.time = 0;
+        swipe.sprite.SetActive(false);
+        swipe.timer.time = t;
+        GameObject obj = Instantiate(timer, swipe.transform.position, Quaternion.identity);
+        obj.transform.SetParent(canvas.transform);
         yield return new WaitForSeconds(t);
+        Destroy(obj);
+        swipe.sprite.SetActive(true);
         swipe.time = t;
     }
     private IEnumerator TimerDoubling()
     {
         int t = doubling.time;
         doubling.time = 0;
+        doubling.sprite.SetActive(false);
+        doubling.timer.time = t;
+        GameObject obj = Instantiate(timer, doubling.transform.position, Quaternion.identity);
+        obj.transform.SetParent(canvas.transform);
         yield return new WaitForSeconds(t);
+        Destroy(obj);
+        doubling.sprite.SetActive(true);
         doubling.time = t;
     }
 }

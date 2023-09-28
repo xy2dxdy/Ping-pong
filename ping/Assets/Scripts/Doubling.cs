@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngineInternal;
 using System;
+using UnityEngine.UI;
 
 public class Doubling : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class Doubling : MonoBehaviour
     public bool isBallCreated = false;
     public int speed = 13;
     public int time = 15;
-    public Sprite sprite;
+    public GameObject sprite;
+    public CoroutineTimer timer;
     void Update()
     {
         if (down && hit && !isRun)

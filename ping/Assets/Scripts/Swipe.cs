@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Swipe : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Swipe : MonoBehaviour
     public bool isUsed = false;
     public Ball ball;
     public int time = 6;
-    public Sprite sprite;
+    public GameObject sprite;
+    public CoroutineTimer timer;
     void FixedUpdate()
     {
         if (down && hit)

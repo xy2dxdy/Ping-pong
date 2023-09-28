@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gluing : MonoBehaviour
 {
@@ -13,8 +14,9 @@ public class Gluing : MonoBehaviour
     public bool hit = true;
     public int speed = 13;
     public int time = 10;
-    public Sprite sprite;
+    public GameObject sprite;
     public Swipe swipe2;
+    public CoroutineTimer timer;
     private void Start()
     {
         delta = ball.transform.position - obj.transform.position;
