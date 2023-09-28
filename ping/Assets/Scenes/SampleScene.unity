@@ -3637,7 +3637,7 @@ PrefabInstance:
     - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: particle
       value: 
-      objectReference: {fileID: 3969319662781543304, guid: 28909d37283897b48937750d53548aa3, type: 3}
+      objectReference: {fileID: 2875147030203916615, guid: aa40c258b03c147428a3edcd40bbd8f0, type: 3}
     - target: {fileID: 217120907437574522, guid: 3e924558b68580d4a8c9d3ea7d0bc964, type: 3}
       propertyPath: wallLeft
       value: 
