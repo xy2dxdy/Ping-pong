@@ -6,8 +6,10 @@ public class Swipe : MonoBehaviour
 {
     public bool down = false;
     public bool hit = false;
+    public bool isUsed = false;
     public Ball ball;
     public int time = 6;
+    public Sprite sprite;
     void FixedUpdate()
     {
         if (down && hit)
@@ -15,6 +17,7 @@ public class Swipe : MonoBehaviour
             ball.GetComponent<Rigidbody2D>().velocity *= 2;
             down = false;
             hit = false;
+            isUsed = true;
         }
     }
 }

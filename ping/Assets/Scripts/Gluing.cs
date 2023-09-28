@@ -13,6 +13,8 @@ public class Gluing : MonoBehaviour
     public bool hit = true;
     public int speed = 13;
     public int time = 10;
+    public Sprite sprite;
+    public Swipe swipe2;
     private void Start()
     {
         delta = ball.transform.position - obj.transform.position;
@@ -21,16 +23,25 @@ public class Gluing : MonoBehaviour
     {
         if (down && hit)
         {
-            
+
             if (Input.GetKeyDown(code))
             {
-                ball.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+                Vector2 vector = new Vector2(UnityEngine.Random.Range(2, 10), UnityEngine.Random.Range(-10, 10)).normalized;
+                if (swipe2.isUsed)
+                {
+                    ball.GetComponent<Rigidbody2D>().velocity = vector * speed * 2;
+                    swipe2.isUsed = false;
+                }
+                else
+                    ball.GetComponent<Rigidbody2D>().velocity = vector * speed;
                 down = false;
                 hit = false;
 
             }
             else
+            {
                 ball.transform.position = delta + obj.transform.position;
+            }
         }
     }
 }

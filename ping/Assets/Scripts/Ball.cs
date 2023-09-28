@@ -51,8 +51,13 @@ public class Ball : MonoBehaviour
             numberOfCollisions++;
             if (gl.down == true)
             {
-                gl.delta = transform.position - gl.obj.transform.position;
-                gl.hit = true;
+                if (doubling2.isBallCreated)
+                    gl.down = false;
+                else
+                {
+                    gl.delta = transform.position - gl.obj.transform.position;
+                    gl.hit = true;
+                }
             }
             else
             {
@@ -110,8 +115,13 @@ public class Ball : MonoBehaviour
                 numberOfCollisions++;
                 if (gl2.down == true)
                 {
-                    gl2.delta = transform.position - gl2.obj.transform.position;
-                    gl2.hit = true;
+                    if (doubling1.isBallCreated)
+                        gl2.down = false;
+                    else
+                    {
+                        gl2.delta = transform.position - gl2.obj.transform.position;
+                        gl2.hit = true;
+                    }
                 }
                 else
                 {
