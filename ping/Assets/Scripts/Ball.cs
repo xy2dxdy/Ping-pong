@@ -81,29 +81,62 @@ public class Ball : MonoBehaviour
 
             if (doubling2.down == true && doubling2.hit == true)
             {
-
-                if (transform != doubling2.newBall)
+                if (swipe1.down == false)
                 {
-                    gl.ball = doubling2.newBall;
-                    gl2.ball = doubling2.newBall;
-                    doubling1.ball = doubling2.newBall;
-                    doubling2.ball = doubling2.newBall;
-                    doubling2.isRun = false;
-                    scoreUI.ball = doubling2.newBall;
-                }
+                    if (transform != doubling2.newBall)
+                    {
+                        gl.ball = doubling2.newBall;
+                        gl2.ball = doubling2.newBall;
+                        doubling1.ball = doubling2.newBall;
+                        doubling2.ball = doubling2.newBall;
+                        doubling2.isRun = false;
+                        scoreUI.ball = doubling2.newBall;
+                    }
 
-                doubling2.down = false;
-                doubling2.isBallCreated = false;
-                Destroy(transform.GameObject());
-                
-                if (wallRight.secondBall != null)
-                {
-                    wallRight.ball = wallRight.secondBall;
-                    wallRight.secondBall = null;
-                    doubling2.ball = doubling2.newBall;
-                    doubling2.newBall = null;
+                    doubling2.down = false;
+                    doubling2.isBallCreated = false;
+                    Destroy(transform.GameObject());
+
+                    if (wallRight.secondBall != null)
+                    {
+                        wallRight.ball = wallRight.secondBall;
+                        wallRight.secondBall = null;
+                        doubling2.ball = doubling2.newBall;
+                        doubling2.newBall = null;
+                    }
+                    //wallLeft.score += 3;
                 }
-                //wallLeft.score += 3;
+                else 
+                {
+                    if (transform == doubling2.newBall)
+                    {
+                        Destroy(gl.ball.GameObject());
+                        gl.ball = doubling2.newBall;
+                        gl2.ball = doubling2.newBall;
+                        doubling1.ball = doubling2.newBall;
+                        doubling2.ball = doubling2.newBall;
+                        doubling2.isRun = false;
+                        scoreUI.ball = doubling2.newBall;
+                        swipe1.ball = doubling2.newBall;
+                        swipe2.ball = doubling2.newBall;
+                    }
+                    else
+                    {
+                        Destroy(doubling2.newBall.GameObject());
+                    }
+                    doubling2.down = false;
+                    doubling2.isBallCreated = false;
+                    
+
+                    if (wallRight.secondBall != null)
+                    {
+                        wallRight.ball = wallRight.secondBall;
+                        wallRight.secondBall = null;
+                        doubling2.ball = doubling2.newBall;
+                        doubling2.newBall = null;
+                    }
+                    //swipe1.down = false;
+                }
             }
             else
             {
@@ -152,28 +185,61 @@ public class Ball : MonoBehaviour
                 if (doubling1.down == true && doubling1.hit == true)
                 {
 
-
-                    if (transform != doubling1.newBall)
+                    if (swipe2.down == false)
                     {
-                        gl.ball = doubling1.newBall;
-                        gl2.ball = doubling1.newBall;
-                        doubling1.ball = doubling1.newBall;
-                        doubling2.ball = doubling1.newBall;
-                        doubling1.isRun = false;
-                        scoreUI.ball = doubling1.newBall;
-                    }
+                        if (transform != doubling1.newBall)
+                        {
+                            gl.ball = doubling1.newBall;
+                            gl2.ball = doubling1.newBall;
+                            doubling1.ball = doubling1.newBall;
+                            doubling2.ball = doubling1.newBall;
+                            doubling1.isRun = false;
+                            scoreUI.ball = doubling1.newBall;
+                        }
 
-                    doubling1.down = false;
-                    doubling1.isBallCreated = false;
-                    Destroy(transform.GameObject());
-                    if (wallLeft.secondBall != null)
-                    {
-                        wallLeft.ball = wallLeft.secondBall;
-                        wallLeft.secondBall = null;
-                        doubling1.ball = doubling1.newBall;
-                        doubling1.newBall = null;
+                        doubling1.down = false;
+                        doubling1.isBallCreated = false;
+                        Destroy(transform.GameObject());
+                        if (wallLeft.secondBall != null)
+                        {
+                            wallLeft.ball = wallLeft.secondBall;
+                            wallLeft.secondBall = null;
+                            doubling1.ball = doubling1.newBall;
+                            doubling1.newBall = null;
+                        }
+                        //wallRight.score += 3;
                     }
-                    //wallRight.score += 3;
+                    else 
+                    {
+                        if (transform == doubling1.newBall)
+                        {
+                            Destroy(doubling1.ball.GameObject());
+                            gl.ball = doubling1.newBall;
+                            gl2.ball = doubling1.newBall;
+                            doubling1.ball = doubling1.newBall;
+                            doubling2.ball = doubling1.newBall;
+                            doubling1.isRun = false;
+                            scoreUI.ball = doubling1.newBall;
+                            swipe1.ball = doubling1.newBall;
+                            swipe2.ball = doubling1.newBall;
+                        }
+                        else
+                        {
+                            Destroy(doubling1.newBall.GameObject());
+                        }
+                        doubling1.down = false;
+                        doubling1.isBallCreated = false;
+                        
+                        if (wallLeft.secondBall != null)
+                        {
+                            wallLeft.ball = wallLeft.secondBall;
+                            wallLeft.secondBall = null;
+                            doubling1.ball = doubling1.newBall;
+                            doubling1.newBall = null;
+                        }
+                        //wallRight.score += 3;
+                        //swipe2.down = false;
+                    }
                 }
                 else
                 {
