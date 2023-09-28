@@ -431,7 +431,7 @@ MonoBehaviour:
   gluing: {fileID: 1699864863}
   doubling: {fileID: 1751001163}
   swipe: {fileID: 2012737821}
-  timer: {fileID: 0}
+  timer: {fileID: 1189274291447916596, guid: f3299479082e01e4389f5a00ba23480c, type: 3}
   canvas: {fileID: 100470116}
 --- !u!1 &100470113
 GameObject:
