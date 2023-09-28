@@ -25,11 +25,16 @@ public class ScoreUI : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == ball.GameObject() || collision.gameObject == secondBall.GameObject())
+        if (collision.gameObject == ball.GameObject() /*|| collision.gameObject == secondBall.GameObject()*/)
         {
             int.TryParse(textScore.text, out score);
             score += difference;
         }
+        //if (ball == null)
+        //{
+        //    ball = secondBall;
+        //    secondBall = null;
+        //}
     }
 
 }

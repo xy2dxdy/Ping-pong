@@ -7,10 +7,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UIElements;
+using static UnityEngine.ParticleSystem;
 
 public class Ball : MonoBehaviour
 {
     public float speed = 30;
+    public float speedValue;
     private GameObject obj;//кто из игроков последним отбил
     public Gluing gl;
     public Gluing gl2;
@@ -25,6 +27,7 @@ public class Ball : MonoBehaviour
     public MoveRacket racketRight;
     public Swipe swipe1;
     public Swipe swipe2;
+    public ParticleSystem particle;
     public void Copy(Ball ball)
     {
         gl = ball.gl;
@@ -38,6 +41,11 @@ public class Ball : MonoBehaviour
         gl2.down = false;
 
     }
+    private void FixedUpdate()
+    {
+        if(GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
+            speed += Time.deltaTime * speed * 0.01f;
+    }
 
     float hitFactor(Vector2 racketPos, Vector2 ballPos, float racketHeight)
     {
@@ -47,6 +55,10 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.name == "RacketLeft")
         {
+            ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule psmain = ps.main;
+            psmain.startColor = new Color(0.5f, 1, 0.5f, 1);
+            Instantiate(particle, transform.position, Quaternion.identity);
             scoreUI = wallRight;
             numberOfCollisions++;
             if (gl.down == true)
@@ -55,6 +67,7 @@ public class Ball : MonoBehaviour
                     gl.down = false;
                 else
                 {
+                    GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                     gl.delta = transform.position - gl.obj.transform.position;
                     gl.hit = true;
                 }
@@ -76,11 +89,13 @@ public class Ball : MonoBehaviour
                     doubling1.ball = doubling2.newBall;
                     doubling2.ball = doubling2.newBall;
                     doubling2.isRun = false;
+                    scoreUI.ball = doubling2.newBall;
                 }
 
                 doubling2.down = false;
                 doubling2.isBallCreated = false;
                 Destroy(transform.GameObject());
+                
                 if (wallRight.secondBall != null)
                 {
                     wallRight.ball = wallRight.secondBall;
@@ -88,7 +103,7 @@ public class Ball : MonoBehaviour
                     doubling2.ball = doubling2.newBall;
                     doubling2.newBall = null;
                 }
-
+                //wallLeft.score += 3;
             }
             else
             {
@@ -111,6 +126,10 @@ public class Ball : MonoBehaviour
             Debug.Log(collision.gameObject.name);
             if (collision.gameObject.name == "RacketRight")
             {
+                ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+                ParticleSystem.MainModule psmain = ps.main;
+                psmain.startColor = new Color(1, 0.5f, 0.5f, 1);
+                Instantiate(particle, transform.position, Quaternion.identity);
                 scoreUI = wallLeft;
                 numberOfCollisions++;
                 if (gl2.down == true)
@@ -119,6 +138,7 @@ public class Ball : MonoBehaviour
                         gl2.down = false;
                     else
                     {
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                         gl2.delta = transform.position - gl2.obj.transform.position;
                         gl2.hit = true;
                     }
@@ -140,6 +160,7 @@ public class Ball : MonoBehaviour
                         doubling1.ball = doubling1.newBall;
                         doubling2.ball = doubling1.newBall;
                         doubling1.isRun = false;
+                        scoreUI.ball = doubling1.newBall;
                     }
 
                     doubling1.down = false;
@@ -152,7 +173,7 @@ public class Ball : MonoBehaviour
                         doubling1.ball = doubling1.newBall;
                         doubling1.newBall = null;
                     }
-
+                    //wallRight.score += 3;
                 }
                 else
                 {
@@ -174,6 +195,8 @@ public class Ball : MonoBehaviour
             {
                 if (collision.gameObject == wallLeft.GameObject())
                 {
+                    
+                    speed = speedValue;
                     if (doubling2.isBallCreated)
                     {
                         if (transform != doubling2.newBall)
@@ -218,11 +241,15 @@ public class Ball : MonoBehaviour
                         racketLeft.isSlow = false;
                         racketLeft.speed *= 2;
                     }
+                    GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 }
                 else
                 {
                     if (collision.gameObject == wallRight.GameObject())
                     {
+                       
+                        speed = speedValue;
+
                         if (doubling1.isBallCreated)
                         {
                             if (transform != doubling1.newBall)
@@ -268,7 +295,24 @@ public class Ball : MonoBehaviour
                             racketLeft.isSlow = false;
                             racketLeft.speed *= 2;
                         }
-
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                    }
+                    if (collision.gameObject.name == "WallTop")
+                    {
+                        ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+                        ParticleSystem.MainModule psmain = ps.main;
+                        psmain.startColor = new Color(0.5f, 0.5f, 1, 1);
+                        Instantiate(particle, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        if (collision.transform.name == "WallBottom")
+                        {
+                            ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+                            ParticleSystem.MainModule psmain = ps.main;
+                            psmain.startColor = new Color(1, 0.5f, 0.96f, 1);
+                            Instantiate(particle, transform.position, Quaternion.identity);
+                        }
                     }
                     
                 }
