@@ -30,10 +30,15 @@ public class RandomSpawn : MonoBehaviour
 
     public void Spawn()
     {
+        if (zone)
+        {
+            Debug.Log("Destroy");
+            Destroy(zone);
+        }
         Vector2 pos = center + new Vector2(Random.Range(-size.x, size.x), Random.Range(-size.y, size.y));
         int number = Random.Range(0, lenght);
-        zone = objects[number];
+        //zone = ;
         //zone.name = "Zone";
-        Instantiate(zone, pos, Quaternion.identity); // осуществл€ем по€вление объекта в заданных случайных позици€х в диапазоне заданных координат
+        zone = Instantiate(objects[number], pos, Quaternion.identity); // осуществл€ем по€вление объекта в заданных случайных позици€х в диапазоне заданных координат
     }
 }
