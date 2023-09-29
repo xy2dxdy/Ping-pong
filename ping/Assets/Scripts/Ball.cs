@@ -317,6 +317,16 @@ public class Ball : MonoBehaviour
                         racketLeft.speed *= 2;
                     }
                     GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                    if (swipe1.isUsed == true)
+                    {
+                        GetComponent<Rigidbody2D>().velocity /= 2;
+                        swipe1.isUsed = false;
+                    }
+                    if (swipe2.isUsed == true)
+                    {
+                        GetComponent<Rigidbody2D>().velocity /= 2;
+                        swipe2.isUsed = false;
+                    }
                 }
                 else
                 {
@@ -372,6 +382,16 @@ public class Ball : MonoBehaviour
                             racketLeft.speed *= 2;
                         }
                         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                        if (swipe1.isUsed == true)
+                        {
+                            GetComponent<Rigidbody2D>().velocity /= 2;
+                            swipe1.isUsed = false;
+                        }
+                        if (swipe2.isUsed == true)
+                        {
+                            GetComponent<Rigidbody2D>().velocity /= 2;
+                            swipe2.isUsed = false;
+                        }
                     }
                     if (collision.gameObject.name == "WallTop")
                     {

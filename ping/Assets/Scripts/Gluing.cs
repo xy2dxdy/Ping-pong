@@ -28,7 +28,7 @@ public class Gluing : MonoBehaviour
 
             if (Input.GetKeyDown(code))
             {
-                Vector2 vector = new Vector2(UnityEngine.Random.Range(2, 10), UnityEngine.Random.Range(-10, 10)).normalized;
+                Vector2 vector = new Vector2(UnityEngine.Random.Range(10, 20), UnityEngine.Random.Range(-10, 10)).normalized;
                 if (swipe2.isUsed)
                 {
                     ball.GetComponent<Rigidbody2D>().velocity = vector * speed * 2;
@@ -42,6 +42,7 @@ public class Gluing : MonoBehaviour
             }
             else
             {
+                ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 ball.transform.position = delta + obj.transform.position;
             }
         }
