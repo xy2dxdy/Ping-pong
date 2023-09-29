@@ -29,14 +29,14 @@ public class User : MonoBehaviour
             switch (current)
             {
                 case 0:
-                    if (gluing.time != 0)
+                    if (gluing.time != 0 && doubling.down == false && swipe.down == false)
                     {
                         gluing.down = true;
                         StartCoroutine(TimerGluing());
                     }
                     break;
                 case 1:
-                    if (doubling.time != 0)
+                    if (doubling.time != 0 && gluing.down == false && swipe.down == false)
                     {
                         doubling.down = true;
                         doubling.hit = false;
@@ -47,7 +47,7 @@ public class User : MonoBehaviour
                     
                     break;
                 case 2:
-                    if (swipe.time != 0)
+                    if (swipe.time != 0 && gluing.down == false && doubling.down == false)
                     {
                         swipe.down = true;
                         StartCoroutine(TimerSwipe());
