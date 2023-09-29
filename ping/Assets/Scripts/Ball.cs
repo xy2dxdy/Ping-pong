@@ -59,7 +59,7 @@ public class Ball : MonoBehaviour
             Vector3 pos = transform.position;
             ParticleSystem ps = particle.GetComponent<ParticleSystem>();
             ParticleSystem.MainModule psmain = ps.main;
-            psmain.startColor = new Color(0.5f, 1, 0.5f, 1);
+            psmain.startColor = new Color(1, 0.09803922f, 0, 1);
             Instantiate(particle, transform.position, Quaternion.identity);
             scoreUI = wallRight;
             numberOfCollisions++;
@@ -188,7 +188,7 @@ public class Ball : MonoBehaviour
                 Vector3 pos = transform.position;
                 ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                 ParticleSystem.MainModule psmain = ps.main;
-                psmain.startColor = new Color(1, 0.5f, 0.5f, 1);
+                psmain.startColor = new Color(0, 1, 1, 1);
                 Instantiate(particle, transform.position, Quaternion.identity);
                 scoreUI = wallLeft;
                 numberOfCollisions++;
@@ -446,7 +446,7 @@ public class Ball : MonoBehaviour
                     {
                         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                         ParticleSystem.MainModule psmain = ps.main;
-                        psmain.startColor = new Color(0.5f, 0.5f, 1, 1);
+                        psmain.startColor = new Color(0, 1, 0.03260517f, 1);
                         Instantiate(particle, transform.position, Quaternion.identity);
                     }
                     else
@@ -455,7 +455,7 @@ public class Ball : MonoBehaviour
                         {
                             ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                             ParticleSystem.MainModule psmain = ps.main;
-                            psmain.startColor = new Color(1, 0.5f, 0.96f, 1);
+                            psmain.startColor = new Color(1, 0, 1, 1);
                             Instantiate(particle, transform.position, Quaternion.identity);
                         }
                     }
