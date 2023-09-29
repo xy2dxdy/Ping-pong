@@ -101,6 +101,8 @@ public class Ball : MonoBehaviour
                     {
                         wallRight.ball = wallRight.secondBall;
                         wallRight.secondBall = null;
+                        wallLeft.ball = wallLeft.secondBall;
+                        wallLeft.secondBall = null;
                         doubling2.ball = doubling2.newBall;
                         doubling2.newBall = null;
                     }
@@ -132,6 +134,8 @@ public class Ball : MonoBehaviour
                     {
                         wallRight.ball = wallRight.secondBall;
                         wallRight.secondBall = null;
+                        wallLeft.ball = wallLeft.secondBall;
+                        wallLeft.secondBall = null;
                         doubling2.ball = doubling2.newBall;
                         doubling2.newBall = null;
                     }
@@ -204,6 +208,8 @@ public class Ball : MonoBehaviour
                         {
                             wallLeft.ball = wallLeft.secondBall;
                             wallLeft.secondBall = null;
+                            wallRight.ball = wallRight.secondBall;
+                            wallRight.secondBall = null;
                             doubling1.ball = doubling1.newBall;
                             doubling1.newBall = null;
                         }
@@ -234,6 +240,8 @@ public class Ball : MonoBehaviour
                         {
                             wallLeft.ball = wallLeft.secondBall;
                             wallLeft.secondBall = null;
+                            wallRight.ball = wallRight.secondBall;
+                            wallRight.secondBall = null;
                             doubling1.ball = doubling1.newBall;
                             doubling1.newBall = null;
                         }
@@ -277,6 +285,7 @@ public class Ball : MonoBehaviour
                         }
                         doubling2.isBallCreated = false;
                         doubling2.down = false;
+                        wallLeft.score += 3;
                         Destroy(transform.GameObject());
                     }
                     else
@@ -331,6 +340,7 @@ public class Ball : MonoBehaviour
 
                             doubling1.isBallCreated = false;
                             doubling1.down = false;
+                            wallRight.score += 3;
                             Destroy(transform.GameObject());
 
                         }
