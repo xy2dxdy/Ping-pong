@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
+//using System.Collections.Generic;
+//using Unity.VisualScripting;
+//using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,10 +20,8 @@ public class User : MonoBehaviour
     public GameObject timer;
     public Canvas canvas;
     public CoursoreLock cursor;
-    //public Vector3 posX;
     void Start()
     {
-        //posX = transform.position + new Vector3(transform.GetComponent<BoxCollider2D>().size.x / 2, 0 , 0);
         objects[current].GetComponent<Outline>().enabled = true;
     }
     void Update()
@@ -77,17 +75,8 @@ public class User : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
-                //cursor.enabled = false;
-            }
-            else
-            {
-                if (Input.GetKeyDown(pause))
-                {
-                    
-                }
             }
         }
-
     }
     private IEnumerator TimerGluing()
     {

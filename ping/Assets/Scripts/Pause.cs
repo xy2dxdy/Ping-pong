@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+
 public class Pause : MonoBehaviour
 {
-    private bool paused = false;
+    public bool paused = false;
     public Text panel;
     public KeyCode pause;
     // Use this for initialization
@@ -21,16 +23,16 @@ public class Pause : MonoBehaviour
                 paused = false;
             else
                 paused = true;
-            if (paused)
-            {
-                Time.timeScale = 0;
-                panel.GetComponent<Text>().enabled = true;
-            }
-            else 
-            {
-                Time.timeScale = 1;
-                panel.GetComponent<Text>().enabled = false;
-            }
+        }
+        if (paused)
+        {
+            Time.timeScale = 0;
+            panel.GetComponent<Text>().enabled = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            panel.GetComponent<Text>().enabled = false;
         }
     }
 }

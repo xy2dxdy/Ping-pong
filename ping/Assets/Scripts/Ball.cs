@@ -408,7 +408,7 @@ public class Ball : MonoBehaviour
                         audioSource.Play();
                         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                         ParticleSystem.MainModule psmain = ps.main;
-                        psmain.startColor = new Color(0, 1, 0.03260517f, 1);
+                        psmain.startColor = new Color(1, 0, 1, 1);
                         Instantiate(particle, transform.position, Quaternion.identity);
                     }
                     else

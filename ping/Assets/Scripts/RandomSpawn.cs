@@ -8,7 +8,7 @@ public class RandomSpawn : MonoBehaviour
     public GameObject[] objects;
     public Slowdown slowdaun;
     public BonusZone bonusZone;
-    public InverceZone inverceZone;
+    public GameObject inverceZone;
     public Vector2 center; // координаты центра
     public Vector2 size = new Vector2(6.45f, 5.875f); // координаты в которых будут появляться объекты
     public GameObject zone;

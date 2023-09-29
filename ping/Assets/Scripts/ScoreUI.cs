@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Unity.VisualScripting.Member;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ScoreUI : MonoBehaviour
 {
@@ -15,16 +16,20 @@ public class ScoreUI : MonoBehaviour
     public int difference = 3;
     public AudioSource mySource;
     public AudioSource theEnd;
+    public Text user;
+    public Text winner;
+    public Pause pause;
 
     private void Update()
     {
         textScore.text = "" + score;
         if (score >= maxScore)
         {
-            
-            Debug.Log("END");
-            Application.Quit();
-            
+            Destroy(ball.spawn.zone);
+            winner.text = user.text + " is WIN. Press ESC to exit to the menu";
+            pause.paused = true;
+            pause.panel.GetComponent<Text>().enabled = false;
+
         }
 
     }
