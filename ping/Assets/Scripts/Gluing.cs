@@ -18,6 +18,7 @@ public class Gluing : MonoBehaviour
     public GameObject sprite;
     public Swipe swipe2;
     public CoroutineTimer timer;
+    public bool isEnd = false;
     private void Start()
     {
         delta = ball.transform.position - obj.transform.position;
@@ -31,8 +32,16 @@ public class Gluing : MonoBehaviour
             {
                 ParticleSystem ps = ball.particle.GetComponent<ParticleSystem>();
                 ParticleSystem.MainModule psmain = ps.main;
-                
-                Vector2 vector = new Vector2(UnityEngine.Random.Range(10, 20), UnityEngine.Random.Range(-10, 10)).normalized;
+                Vector2 vector = new Vector2(0, 0);
+                if (isEnd)
+                {
+                    vector = new Vector2(UnityEngine.Random.Range(10, 20), UnityEngine.Random.Range(-10, 10)).normalized;
+                    isEnd = false;
+                }
+                else
+                {
+                    vector = Vector2.right;
+                }
                 if (this == ball.gl)
                 {
                     psmain.startColor = new Color(1, 0.09803922f, 0, 1);
@@ -45,11 +54,15 @@ public class Gluing : MonoBehaviour
                 }
                 if (swipe2.isUsed)
                 {
+                    ball.audioSource.Play();
                     ball.GetComponent<Rigidbody2D>().velocity = vector * speed * 2;
                     swipe2.isUsed = false;
                 }
                 else
+                {
+                    ball.audioSource.Play();
                     ball.GetComponent<Rigidbody2D>().velocity = vector * speed;
+                }
                 down = false;
                 hit = false;
 

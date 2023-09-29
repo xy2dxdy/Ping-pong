@@ -36,7 +36,7 @@ public class User : MonoBehaviour
                     }
                     break;
                 case 1:
-                    if (doubling.time != 0 && gluing.down == false && swipe.down == false)
+                    if (doubling.time != 0 && (gluing.down == false || gluing.isEnd == true) && swipe.down == false)
                     {
                         doubling.down = true;
                         doubling.hit = false;
@@ -47,7 +47,7 @@ public class User : MonoBehaviour
                     
                     break;
                 case 2:
-                    if (swipe.time != 0 && gluing.down == false && doubling.down == false)
+                    if (swipe.time != 0 && (gluing.down == false || gluing.isEnd == true) && doubling.down == false)
                     {
                         swipe.down = true;
                         StartCoroutine(TimerSwipe());

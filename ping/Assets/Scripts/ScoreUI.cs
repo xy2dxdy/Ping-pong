@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class ScoreUI : MonoBehaviour
 {
@@ -12,14 +13,18 @@ public class ScoreUI : MonoBehaviour
     public Ball ball;
     public Ball secondBall;
     public int difference = 3;
+    public AudioSource mySource;
+    public AudioSource theEnd;
 
     private void Update()
     {
         textScore.text = "" + score;
         if (score >= maxScore)
         {
+            theEnd.Play();
             Debug.Log("END");
             Application.Quit();
+            
         }
 
     }
@@ -29,6 +34,7 @@ public class ScoreUI : MonoBehaviour
         {
             int.TryParse(textScore.text, out score);
             score += difference;
+            mySource.Play();
         }
     }
 

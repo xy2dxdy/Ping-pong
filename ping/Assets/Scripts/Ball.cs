@@ -28,6 +28,7 @@ public class Ball : MonoBehaviour
     public Swipe swipe1;
     public Swipe swipe2;
     public ParticleSystem particle;
+    public AudioSource audioSource;
     public void Copy(Ball ball)
     {
         gl = ball.gl;
@@ -55,6 +56,8 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.name == "RacketLeft")
         {
+            if(gl.down == false)
+                audioSource.Play();
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             Vector3 pos = transform.position;
             ParticleSystem ps = particle.GetComponent<ParticleSystem>();
@@ -82,6 +85,7 @@ public class Ball : MonoBehaviour
                 float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
                 Vector2 dir = new Vector2(1, y).normalized;
                 Instantiate(particle, transform.position, Quaternion.identity);
+                audioSource.Play();
                 GetComponent<Rigidbody2D>().velocity = dir * speed;
             }
 
@@ -158,6 +162,8 @@ public class Ball : MonoBehaviour
         {
             if (collision.gameObject.name == "RacketRight")
             {
+                if(gl2.down == false)
+                    audioSource.Play();
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 Vector3 pos = transform.position;
                 ParticleSystem ps = particle.GetComponent<ParticleSystem>();
@@ -185,6 +191,7 @@ public class Ball : MonoBehaviour
                     float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
                     Vector2 dir = new Vector2(-1, y).normalized;
                     Instantiate(particle, transform.position, Quaternion.identity);
+                    audioSource.Play();
                     GetComponent<Rigidbody2D>().velocity = dir * speed;
                 }
                 if (doubling1.down == true && doubling1.hit == true)
@@ -292,6 +299,7 @@ public class Ball : MonoBehaviour
                         transform.position = gameObject.transform.position;
                         transform.position += new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
                         gl.delta = transform.position - gl.obj.transform.position;
+                        gl.isEnd = true;
                         gl.down = true;
                         gl2.down = false;
                         doubling1.down = false;
@@ -360,6 +368,7 @@ public class Ball : MonoBehaviour
                             GameObject gameObject = GameObject.Find("RacketRight");
                             transform.position = gameObject.transform.position;
                             transform.position -= new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 2, 0, 0);
+                            gl2.isEnd = true;
                             gl2.down = true;
                             gl2.delta = transform.position - gl2.obj.transform.position;
                             gl.down = false;
@@ -396,6 +405,7 @@ public class Ball : MonoBehaviour
                     }
                     if (collision.gameObject.name == "WallTop")
                     {
+                        audioSource.Play();
                         ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                         ParticleSystem.MainModule psmain = ps.main;
                         psmain.startColor = new Color(0, 1, 0.03260517f, 1);
@@ -405,6 +415,7 @@ public class Ball : MonoBehaviour
                     {
                         if (collision.transform.name == "WallBottom")
                         {
+                            audioSource.Play();
                             ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                             ParticleSystem.MainModule psmain = ps.main;
                             psmain.startColor = new Color(1, 0, 1, 1);
