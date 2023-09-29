@@ -21,7 +21,7 @@ public class ScoreUI : MonoBehaviour
         textScore.text = "" + score;
         if (score >= maxScore)
         {
-            theEnd.Play();
+            
             Debug.Log("END");
             Application.Quit();
             
@@ -34,7 +34,10 @@ public class ScoreUI : MonoBehaviour
         {
             int.TryParse(textScore.text, out score);
             score += difference;
-            mySource.Play();
+            if(score >= maxScore)
+                theEnd.Play();
+            else
+                mySource.Play();
         }
     }
 
