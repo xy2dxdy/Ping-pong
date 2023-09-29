@@ -44,8 +44,9 @@ public class Gluing : MonoBehaviour
             }
             else
             {
-                ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                //ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 ball.transform.position = delta + obj.transform.position;
+                
             }
         }
     }

@@ -16,8 +16,10 @@ public class User : MonoBehaviour
     public Swipe swipe;
     public GameObject timer;
     public Canvas canvas;
+    //public Vector3 posX;
     void Start()
     {
+        //posX = transform.position + new Vector3(transform.GetComponent<BoxCollider2D>().size.x / 2, 0 , 0);
         objects[current].GetComponent<Outline>().enabled = true;
     }
     void Update()

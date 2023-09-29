@@ -55,6 +55,8 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.name == "RacketLeft")
         {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            Vector3 pos = transform.position;
             ParticleSystem ps = particle.GetComponent<ParticleSystem>();
             ParticleSystem.MainModule psmain = ps.main;
             psmain.startColor = new Color(0.5f, 1, 0.5f, 1);
@@ -68,7 +70,13 @@ public class Ball : MonoBehaviour
                 else
                 {
                     GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                    GameObject gameObject = GameObject.Find("RacketLeft");
+                    transform.position = new Vector3(gameObject.transform.position.x, transform.position.y, 0);
+                    //Debug.Log(gameObject.GetComponent<BoxCollider2D>().size.x / 4f);
+                    //Debug.Log(transform.GetComponent<BoxCollider2D>().size.x / 4f);
+                    transform.position += new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 4 + transform.GetComponent<BoxCollider2D>().size.x / 4, 0, 0);
                     gl.delta = transform.position - gl.obj.transform.position;
+
                     gl.hit = true;
                 }
             }
@@ -168,13 +176,16 @@ public class Ball : MonoBehaviour
                 }
             }
             if (swipe1.down == true)
-                swipe1.hit = true;
+                if(gl.down == false)
+                    swipe1.hit = true;
         }
         else
         {
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
             if (collision.gameObject.name == "RacketRight")
             {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                Vector3 pos = transform.position;
                 ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                 ParticleSystem.MainModule psmain = ps.main;
                 psmain.startColor = new Color(1, 0.5f, 0.5f, 1);
@@ -188,7 +199,11 @@ public class Ball : MonoBehaviour
                     else
                     {
                         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                        GameObject gameObject = GameObject.Find("RacketRight");
+                        transform.position = new Vector3(gameObject.transform.position.x, transform.position.y, 0);
+                        transform.position -= new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 4 + transform.GetComponent<BoxCollider2D>().size.x / 4, 0);
                         gl2.delta = transform.position - gl2.obj.transform.position;
+                        //gl2.delta = pos - gl2.obj.transform.position;
                         gl2.hit = true;
                     }
                 }
@@ -286,7 +301,10 @@ public class Ball : MonoBehaviour
                     }
                 }
                 if (swipe2.down == true)
-                    swipe2.hit = true;
+                {
+                    if(gl2.down == false)
+                        swipe2.hit = true;
+                }
             }
             else
             {
