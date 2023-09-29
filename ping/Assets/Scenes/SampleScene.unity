@@ -426,8 +426,8 @@ MonoBehaviour:
   - {fileID: 1699864861}
   - {fileID: 1751001159}
   - {fileID: 2012737816}
-  code: 305
-  right: 275
+  code: 303
+  right: 262
   gluing: {fileID: 1699864863}
   doubling: {fileID: 1751001163}
   swipe: {fileID: 2012737821}
@@ -2545,7 +2545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 80168365}
   ball: {fileID: 137582998}
-  code: 276
+  code: 260
   delta: {x: 0, y: 0, z: 0}
   down: 0
   hit: 0
@@ -3210,7 +3210,7 @@ MonoBehaviour:
   - {fileID: 948504554}
   - {fileID: 2105832446}
   - {fileID: 27049149}
-  code: 113
+  code: 32
   right: 97
   gluing: {fileID: 948504558}
   doubling: {fileID: 2105832450}
