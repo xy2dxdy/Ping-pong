@@ -123,6 +123,85 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3741491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3741494}
+  - component: {fileID: 3741493}
+  - component: {fileID: 3741492}
+  m_Layer: 5
+  m_Name: Pause
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &3741492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741491}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '| |'
+--- !u!222 &3741493
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741491}
+  m_CullTransparentMesh: 1
+--- !u!224 &3741494
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 100470117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 60, y: 62.318}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &27049149
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,11 +507,14 @@ MonoBehaviour:
   - {fileID: 2012737816}
   code: 303
   right: 262
+  scene: 27
+  pause: 0
   gluing: {fileID: 1699864863}
   doubling: {fileID: 1751001163}
   swipe: {fileID: 2012737821}
   timer: {fileID: 1189274291447916596, guid: f3299479082e01e4389f5a00ba23480c, type: 3}
   canvas: {fileID: 100470116}
+  cursor: {fileID: 0}
 --- !u!1 &100470113
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +620,7 @@ RectTransform:
   - {fileID: 1320502824}
   - {fileID: 1909356713}
   - {fileID: 107687757}
+  - {fileID: 3741494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -818,6 +901,7 @@ GameObject:
   - component: {fileID: 407975342}
   - component: {fileID: 407975343}
   - component: {fileID: 407975344}
+  - component: {fileID: 407975345}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -955,6 +1039,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &407975345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407975340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6540b5490be0343468043a73183014fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 3741492}
+  pause: 112
 --- !u!1 &447883104 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 64176421b965d9d4382759c3852cd42d, type: 3}
@@ -3137,11 +3235,14 @@ MonoBehaviour:
   - {fileID: 27049149}
   code: 32
   right: 97
+  scene: 27
+  pause: 0
   gluing: {fileID: 948504558}
   doubling: {fileID: 2105832450}
   swipe: {fileID: 27049154}
   timer: {fileID: 1189274291447916596, guid: f3299479082e01e4389f5a00ba23480c, type: 3}
   canvas: {fileID: 100470116}
+  cursor: {fileID: 0}
 --- !u!1 &1909356712
 GameObject:
   m_ObjectHideFlags: 0

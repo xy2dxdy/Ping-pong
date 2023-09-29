@@ -4,18 +4,22 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class User : MonoBehaviour
 {
     public GameObject[] objects = new GameObject[3];
     public KeyCode code;
     public KeyCode right;
+    public KeyCode scene;
+    public KeyCode pause;
     private int current = 0;
     public Gluing gluing;
     public Doubling doubling;
     public Swipe swipe;
     public GameObject timer;
     public Canvas canvas;
+    public CoursoreLock cursor;
     //public Vector3 posX;
     void Start()
     {
@@ -60,11 +64,28 @@ public class User : MonoBehaviour
         }
         if (Input.GetKeyDown(right))
         {
-            objects[current].GetComponent<Outline>().enabled = false;     
+            objects[current].GetComponent<Outline>().enabled = false;
             current++;
-            if(current > objects.Length - 1)
+            if (current > objects.Length - 1)
                 current = 0;
             objects[current].GetComponent<Outline>().enabled = true;
+        }
+        else
+        {
+            if (Input.GetKeyDown(scene))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+                //cursor.enabled = false;
+            }
+            else
+            {
+                if (Input.GetKeyDown(pause))
+                {
+                    
+                }
+            }
         }
 
     }
