@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
 
 public class Gluing : MonoBehaviour
 {
@@ -28,7 +29,20 @@ public class Gluing : MonoBehaviour
 
             if (Input.GetKeyDown(code))
             {
+                ParticleSystem ps = ball.particle.GetComponent<ParticleSystem>();
+                ParticleSystem.MainModule psmain = ps.main;
+                
                 Vector2 vector = new Vector2(UnityEngine.Random.Range(10, 20), UnityEngine.Random.Range(-10, 10)).normalized;
+                if (this == ball.gl)
+                {
+                    psmain.startColor = new Color(1, 0.09803922f, 0, 1);
+                    Instantiate(ball.particle, ball.transform.position, Quaternion.identity);
+                }
+                if (this == ball.gl2)
+                {
+                    psmain.startColor = new Color(0, 1, 1, 1);
+                    Instantiate(ball.particle, ball.transform.position, Quaternion.identity);
+                }
                 if (swipe2.isUsed)
                 {
                     //swipe2.isGluing = true;

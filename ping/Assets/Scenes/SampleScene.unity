@@ -1104,9 +1104,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects: []
-  slowdaun: {fileID: -2249420539582254002, guid: 0547e748bfcff0443b7e8f7bd4f9da22, type: 3}
-  bonusZone: {fileID: -1320644915364478580, guid: 8e96f639c007c8a4eaaef0dde12fcc05, type: 3}
-  inverceZone: {fileID: -8034612521862815449, guid: ba4154da98a79f442b20154a6aa58f07, type: 3}
+  slowdaun: {fileID: 6355932534673918348, guid: f95aed4039147ee4ca4b4e119dc15563, type: 3}
+  bonusZone: {fileID: 6451657460042503940, guid: 8b3ec5e3876bdba48953615ed4e11a1a, type: 3}
+  inverceZone: {fileID: 4465345678172777513, guid: 7435d881b260f7248b4f3c7143d8fb4c, type: 3}
   center: {x: 0, y: 0}
   size: {x: 6.45, y: 5.875}
   zone: {fileID: 0}

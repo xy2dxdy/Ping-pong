@@ -60,7 +60,6 @@ public class Ball : MonoBehaviour
             ParticleSystem ps = particle.GetComponent<ParticleSystem>();
             ParticleSystem.MainModule psmain = ps.main;
             psmain.startColor = new Color(1, 0.09803922f, 0, 1);
-            Instantiate(particle, transform.position, Quaternion.identity);
             scoreUI = wallRight;
             numberOfCollisions++;
             if (gl.down == true)
@@ -72,8 +71,6 @@ public class Ball : MonoBehaviour
                     GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                     GameObject gameObject = GameObject.Find("RacketLeft");
                     transform.position = new Vector3(gameObject.transform.position.x, transform.position.y, 0);
-                    //Debug.Log(gameObject.GetComponent<BoxCollider2D>().size.x / 4f);
-                    //Debug.Log(transform.GetComponent<BoxCollider2D>().size.x / 4f);
                     transform.position += new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 4 + transform.GetComponent<BoxCollider2D>().size.x / 4, 0, 0);
                     gl.delta = transform.position - gl.obj.transform.position;
 
@@ -84,6 +81,7 @@ public class Ball : MonoBehaviour
             {
                 float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
                 Vector2 dir = new Vector2(1, y).normalized;
+                Instantiate(particle, transform.position, Quaternion.identity);
                 GetComponent<Rigidbody2D>().velocity = dir * speed;
             }
 
@@ -110,17 +108,6 @@ public class Ball : MonoBehaviour
                     doubling2.down = false;
                     doubling2.isBallCreated = false;
                     Destroy(transform.GameObject());
-
-                    //if (wallRight.secondBall != null)
-                    //{
-                    //    wallRight.ball = wallRight.secondBall;
-                    //    wallRight.secondBall = null;
-                    //    wallLeft.ball = wallLeft.secondBall;
-                    //    wallLeft.secondBall = null;
-                    //    doubling2.ball = doubling2.newBall;
-                    //    doubling2.newBall = null;
-                    //}
-                    //wallLeft.score += 3;
                 }
                 else 
                 {
@@ -148,18 +135,6 @@ public class Ball : MonoBehaviour
                     }
                     doubling2.down = false;
                     doubling2.isBallCreated = false;
-                    
-
-                    //if (wallRight.secondBall != null)
-                    //{
-                    //    wallRight.ball = wallRight.secondBall;
-                    //    wallRight.secondBall = null;
-                    //    wallLeft.ball = wallLeft.secondBall;
-                    //    wallLeft.secondBall = null;
-                    //    doubling2.ball = doubling2.newBall;
-                    //    doubling2.newBall = null;
-                    //}
-                    //swipe1.down = false;
                 }
             }
             else
@@ -181,7 +156,6 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            //Debug.Log(collision.gameObject.name);
             if (collision.gameObject.name == "RacketRight")
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
@@ -189,7 +163,7 @@ public class Ball : MonoBehaviour
                 ParticleSystem ps = particle.GetComponent<ParticleSystem>();
                 ParticleSystem.MainModule psmain = ps.main;
                 psmain.startColor = new Color(0, 1, 1, 1);
-                Instantiate(particle, transform.position, Quaternion.identity);
+                
                 scoreUI = wallLeft;
                 numberOfCollisions++;
                 if (gl2.down == true)
@@ -203,7 +177,6 @@ public class Ball : MonoBehaviour
                         transform.position = new Vector3(gameObject.transform.position.x, transform.position.y, 0);
                         transform.position -= new Vector3(gameObject.GetComponent<BoxCollider2D>().size.x / 4 + transform.GetComponent<BoxCollider2D>().size.x / 4, 0);
                         gl2.delta = transform.position - gl2.obj.transform.position;
-                        //gl2.delta = pos - gl2.obj.transform.position;
                         gl2.hit = true;
                     }
                 }
@@ -211,8 +184,8 @@ public class Ball : MonoBehaviour
                 {
                     float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
                     Vector2 dir = new Vector2(-1, y).normalized;
+                    Instantiate(particle, transform.position, Quaternion.identity);
                     GetComponent<Rigidbody2D>().velocity = dir * speed;
-                    Debug.Log(GetComponent<Rigidbody2D>().velocity);
                 }
                 if (doubling1.down == true && doubling1.hit == true)
                 {
@@ -238,16 +211,6 @@ public class Ball : MonoBehaviour
                         doubling1.down = false;
                         doubling1.isBallCreated = false;
                         Destroy(transform.GameObject());
-                        //if (wallLeft.secondBall != null)
-                        //{
-                        //    wallLeft.ball = wallLeft.secondBall;
-                        //    wallLeft.secondBall = null;
-                        //    wallRight.ball = wallRight.secondBall;
-                        //    wallRight.secondBall = null;
-                        //    doubling1.ball = doubling1.newBall;
-                        //    doubling1.newBall = null;
-                        //}
-                        //wallRight.score += 3;
                     }
                     else 
                     {
@@ -274,17 +237,6 @@ public class Ball : MonoBehaviour
                         doubling1.down = false;
                         doubling1.isBallCreated = false;
                         
-                        //if (wallLeft.secondBall != null)
-                        //{
-                        //    wallLeft.ball = wallLeft.secondBall;
-                        //    wallLeft.secondBall = null;
-                        //    wallRight.ball = wallRight.secondBall;
-                        //    wallRight.secondBall = null;
-                        //    doubling1.ball = doubling1.newBall;
-                        //    doubling1.newBall = null;
-                        //}
-                        //wallRight.score += 3;
-                        //swipe2.down = false;
                     }
                 }
                 else
