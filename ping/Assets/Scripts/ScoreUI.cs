@@ -30,11 +30,6 @@ public class ScoreUI : MonoBehaviour
             int.TryParse(textScore.text, out score);
             score += difference;
         }
-        //if (ball == null)
-        //{
-        //    ball = secondBall;
-        //    secondBall = null;
-        //}
     }
 
 }

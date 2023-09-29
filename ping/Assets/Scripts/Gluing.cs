@@ -45,10 +45,8 @@ public class Gluing : MonoBehaviour
                 }
                 if (swipe2.isUsed)
                 {
-                    //swipe2.isGluing = true;
                     ball.GetComponent<Rigidbody2D>().velocity = vector * speed * 2;
                     swipe2.isUsed = false;
-                    //swipe2.isGluing = false;
                 }
                 else
                     ball.GetComponent<Rigidbody2D>().velocity = vector * speed;
@@ -58,7 +56,6 @@ public class Gluing : MonoBehaviour
             }
             else
             {
-                //ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                 ball.transform.position = delta + obj.transform.position;
                 
             }
