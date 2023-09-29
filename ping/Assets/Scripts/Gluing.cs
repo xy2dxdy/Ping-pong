@@ -31,8 +31,10 @@ public class Gluing : MonoBehaviour
                 Vector2 vector = new Vector2(UnityEngine.Random.Range(10, 20), UnityEngine.Random.Range(-10, 10)).normalized;
                 if (swipe2.isUsed)
                 {
+                    //swipe2.isGluing = true;
                     ball.GetComponent<Rigidbody2D>().velocity = vector * speed * 2;
                     swipe2.isUsed = false;
+                    //swipe2.isGluing = false;
                 }
                 else
                     ball.GetComponent<Rigidbody2D>().velocity = vector * speed;

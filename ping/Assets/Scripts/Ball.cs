@@ -91,21 +91,27 @@ public class Ball : MonoBehaviour
                         doubling2.ball = doubling2.newBall;
                         doubling2.isRun = false;
                         scoreUI.ball = doubling2.newBall;
+                        wallRight.ball = wallRight.secondBall;
+                        wallRight.secondBall = null;
+                        wallLeft.ball = wallLeft.secondBall;
+                        wallLeft.secondBall = null;
+                        swipe1.ball = doubling2.newBall;
+                        swipe2.ball = doubling2.newBall;
                     }
 
                     doubling2.down = false;
                     doubling2.isBallCreated = false;
                     Destroy(transform.GameObject());
 
-                    if (wallRight.secondBall != null)
-                    {
-                        wallRight.ball = wallRight.secondBall;
-                        wallRight.secondBall = null;
-                        wallLeft.ball = wallLeft.secondBall;
-                        wallLeft.secondBall = null;
-                        doubling2.ball = doubling2.newBall;
-                        doubling2.newBall = null;
-                    }
+                    //if (wallRight.secondBall != null)
+                    //{
+                    //    wallRight.ball = wallRight.secondBall;
+                    //    wallRight.secondBall = null;
+                    //    wallLeft.ball = wallLeft.secondBall;
+                    //    wallLeft.secondBall = null;
+                    //    doubling2.ball = doubling2.newBall;
+                    //    doubling2.newBall = null;
+                    //}
                     //wallLeft.score += 3;
                 }
                 else 
@@ -121,6 +127,12 @@ public class Ball : MonoBehaviour
                         scoreUI.ball = doubling2.newBall;
                         swipe1.ball = doubling2.newBall;
                         swipe2.ball = doubling2.newBall;
+                        wallRight.ball = wallRight.secondBall;
+                        wallRight.secondBall = null;
+                        wallLeft.ball = wallLeft.secondBall;
+                        wallLeft.secondBall = null;
+                        swipe1.ball = doubling2.newBall;
+                        swipe2.ball = doubling2.newBall;
                     }
                     else
                     {
@@ -130,15 +142,15 @@ public class Ball : MonoBehaviour
                     doubling2.isBallCreated = false;
                     
 
-                    if (wallRight.secondBall != null)
-                    {
-                        wallRight.ball = wallRight.secondBall;
-                        wallRight.secondBall = null;
-                        wallLeft.ball = wallLeft.secondBall;
-                        wallLeft.secondBall = null;
-                        doubling2.ball = doubling2.newBall;
-                        doubling2.newBall = null;
-                    }
+                    //if (wallRight.secondBall != null)
+                    //{
+                    //    wallRight.ball = wallRight.secondBall;
+                    //    wallRight.secondBall = null;
+                    //    wallLeft.ball = wallLeft.secondBall;
+                    //    wallLeft.secondBall = null;
+                    //    doubling2.ball = doubling2.newBall;
+                    //    doubling2.newBall = null;
+                    //}
                     //swipe1.down = false;
                 }
             }
@@ -185,6 +197,7 @@ public class Ball : MonoBehaviour
                     float y = hitFactor(collision.transform.position, transform.position, collision.collider.bounds.size.y);
                     Vector2 dir = new Vector2(-1, y).normalized;
                     GetComponent<Rigidbody2D>().velocity = dir * speed;
+                    Debug.Log(GetComponent<Rigidbody2D>().velocity);
                 }
                 if (doubling1.down == true && doubling1.hit == true)
                 {
@@ -199,20 +212,26 @@ public class Ball : MonoBehaviour
                             doubling2.ball = doubling1.newBall;
                             doubling1.isRun = false;
                             scoreUI.ball = doubling1.newBall;
+                            wallLeft.ball = wallLeft.secondBall;
+                            wallLeft.secondBall = null;
+                            wallRight.ball = wallRight.secondBall;
+                            wallRight.secondBall = null;
+                            swipe1.ball = doubling1.newBall;
+                            swipe2.ball = doubling1.newBall;
                         }
 
                         doubling1.down = false;
                         doubling1.isBallCreated = false;
                         Destroy(transform.GameObject());
-                        if (wallLeft.secondBall != null)
-                        {
-                            wallLeft.ball = wallLeft.secondBall;
-                            wallLeft.secondBall = null;
-                            wallRight.ball = wallRight.secondBall;
-                            wallRight.secondBall = null;
-                            doubling1.ball = doubling1.newBall;
-                            doubling1.newBall = null;
-                        }
+                        //if (wallLeft.secondBall != null)
+                        //{
+                        //    wallLeft.ball = wallLeft.secondBall;
+                        //    wallLeft.secondBall = null;
+                        //    wallRight.ball = wallRight.secondBall;
+                        //    wallRight.secondBall = null;
+                        //    doubling1.ball = doubling1.newBall;
+                        //    doubling1.newBall = null;
+                        //}
                         //wallRight.score += 3;
                     }
                     else 
@@ -228,6 +247,10 @@ public class Ball : MonoBehaviour
                             scoreUI.ball = doubling1.newBall;
                             swipe1.ball = doubling1.newBall;
                             swipe2.ball = doubling1.newBall;
+                            wallLeft.ball = wallLeft.secondBall;
+                            wallLeft.secondBall = null;
+                            wallRight.ball = wallRight.secondBall;
+                            wallRight.secondBall = null;
                         }
                         else
                         {
@@ -236,15 +259,15 @@ public class Ball : MonoBehaviour
                         doubling1.down = false;
                         doubling1.isBallCreated = false;
                         
-                        if (wallLeft.secondBall != null)
-                        {
-                            wallLeft.ball = wallLeft.secondBall;
-                            wallLeft.secondBall = null;
-                            wallRight.ball = wallRight.secondBall;
-                            wallRight.secondBall = null;
-                            doubling1.ball = doubling1.newBall;
-                            doubling1.newBall = null;
-                        }
+                        //if (wallLeft.secondBall != null)
+                        //{
+                        //    wallLeft.ball = wallLeft.secondBall;
+                        //    wallLeft.secondBall = null;
+                        //    wallRight.ball = wallRight.secondBall;
+                        //    wallRight.secondBall = null;
+                        //    doubling1.ball = doubling1.newBall;
+                        //    doubling1.newBall = null;
+                        //}
                         //wallRight.score += 3;
                         //swipe2.down = false;
                     }
@@ -281,7 +304,11 @@ public class Ball : MonoBehaviour
                             doubling2.ball = doubling2.newBall;
                             doubling2.isRun = false;
                             wallLeft.ball = wallLeft.secondBall;
+                            wallRight.ball = wallLeft.secondBall;
+                            wallRight.secondBall = null;
                             wallLeft.secondBall = null;
+                            swipe1.ball = doubling2.newBall;
+                            swipe2.ball = doubling2.newBall;
                         }
                         doubling2.isBallCreated = false;
                         doubling2.down = false;
@@ -344,8 +371,12 @@ public class Ball : MonoBehaviour
                                 doubling1.ball = doubling1.newBall;
                                 doubling2.ball = doubling1.newBall;
                                 doubling1.isRun = false;
+                                wallLeft.ball = wallRight.secondBall;
+                                wallLeft.secondBall = null;
                                 wallRight.ball = wallRight.secondBall;
                                 wallRight.secondBall = null;
+                                swipe1.ball = doubling1.newBall;
+                                swipe2.ball = doubling1.newBall;
                             }
 
                             doubling1.isBallCreated = false;
